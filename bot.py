@@ -25,7 +25,7 @@ const discordIRC = req(require('discord-irc'));
 		"webhookAvatarURL": "https://robohash.org/{$nickname}" // Default avatar to use for webhook messages
 	},
 	"webhooks": {
-		"#angstromctf": "https://discordapp.com/api/webhooks/685930097920049182/QapIGe6qYxSxfyGXqW3lArwMbdNIBjCLOmz76L5cDtHlMXX3npNLqEDHs-eFhefHVdfu"
+		"685520418827927612": "https://discordapp.com/api/webhooks/685930097920049182/QapIGe6qYxSxfyGXqW3lArwMbdNIBjCLOmz76L5cDtHlMXX3npNLqEDHs-eFhefHVdfu"
 	}
 });
 let defund = `no more weebs
