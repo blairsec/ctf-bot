@@ -73,6 +73,9 @@ client.on('messageReactionAdd', (reaction,user) => {
 		if (emoji.name == '🔔') {
 			sender.roles.add("686030992657612806")
 		}
+		if (emoji.name == '🚩') {
+			sender.roles.add("686028267475697666")
+		}
 	}
 });
 
@@ -84,12 +87,10 @@ client.on('messageReactionRemove', (reaction,user) => {
 		if (emoji.name == '🔔') {
 			try { sender.roles.remove("686030992657612806") } catch (e) {}
 		}
+		if (emoji.name == '🚩') {
+			try { sender.roles.remove("686028267475697666") } catch (e) {}
+		}
 	}
 });
-
-client.on('guildMemberAdd', member => {
-	console.log(member)
-	member.roles.add("686028267475697666")
-})
 
 client.login(process.env.TOKEN);
