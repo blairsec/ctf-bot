@@ -16,9 +16,10 @@ let kmh = `malware man
 kevin michael higgs
 higgy baby
 kmh use discord
-kmh stop using irc`.split("\n")
+kmh stop using irc
+nazi mod`.split("\n")
 function emojify(m){
-	return m.split("").map(x=>"abcdefghijklmnopqrstuvwxyz".indexOf(x)+1?`:regional_indicator_${x}:`:x).join(' ');
+	return m.split("").map(x=>~"abcdefghijklmnopqrstuvwxyz".indexOf(x)?`:regional_indicator_${x}:`:x).join(' ');
 }
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
@@ -32,24 +33,24 @@ client.on('message', msg => {
 	if (msg.content == "!ping" && msg.channel.id=="686030136406966311") {
 		msg.channel.send("pong");
 	}
-	if (/actf{.+}/.test(msg.content)) {
-		msg.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
-		if (sender) {
-			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
-		}
-	}
-	if (/super_legit_flag_string/.test(msg.content)) {
+	if (/super_legit_flag_string/.test(msg.content.replace(/\s/g,''))) {
 		msg.delete().then(m=>console.log(`deleted message (legit flag)`)).catch(console.error);
 		if (sender) {
 			sender.ban('legit flag sharing').then(m=>console.log(`banned ${sender.user.tag}`)).catch(_=>_);
 		}
 	}
+	if (/actf{.+}/.test(msg.content.replace(/\s/g,''))) {
+		msg.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
+		if (sender) {
+			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
+		}
+	}
 	
-	if (~msg.content.indexOf('kmh') && msg.channel.id=="686030136406966311") {
+	if (~msg.content.toLowerCase().indexOf('kmh') && msg.channel.id=="686030136406966311") {
 		msg.channel.send(emojify(kmh[~~(Math.random()*kmh.length)]));
 	}
 	
-	if (~msg.content.indexOf('defund') && msg.channel.id=="686030136406966311") {
+	if (~msg.content.toLowerCase().indexOf('defund') && msg.channel.id=="686030136406966311") {
 		msg.channel.send(emojify(defund[~~(Math.random()*defund.length)]));
 	}
 	
@@ -57,10 +58,16 @@ client.on('message', msg => {
 
 client.on('messageUpdate', (oldMessage,newMessage) => {
 	const sender = newMessage.guild?newMessage.guild.member(newMessage.author):null;
-	if (/actf{.+}/.test(newMessage.content)) {
-		newMessage.delete().then(m=>console.log(`deleted message: ${m}`)).catch(console.error);
+	if (/super_legit_flag_string/.test(newMessage.content.replace(/\s/g,''))) {
+		newMessage.delete().then(m=>console.log(`deleted message (legit flag)`)).catch(console.error);
 		if (sender) {
-			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(console.error);
+			sender.ban('legit flag sharing').then(m=>console.log(`banned ${sender.user.tag}`)).catch(_=>_);
+		}
+	}
+	if (/actf{.+}/.test(newMessage.content.replace(/\s/g,''))) {
+		newMessage.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
+		if (sender) {
+			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
 		}
 	}
 });
