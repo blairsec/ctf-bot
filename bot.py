@@ -33,13 +33,13 @@ client.on('message', msg => {
 	if (msg.content == "!ping" && msg.channel.id=="686030136406966311") {
 		msg.channel.send("pong");
 	}
-	if (/super_legit_flag_string/.test(msg.content.replace(/\s/g,''))) {
+	if (/super_legit_flag_string/i.test(msg.content.replace(/\s/g,''))) {
 		msg.delete().then(m=>console.log(`deleted message (legit flag)`)).catch(console.error);
 		if (sender) {
 			sender.ban('legit flag sharing').then(m=>console.log(`banned ${sender.user.tag}`)).catch(_=>_);
 		}
 	}
-	if (/actf{.+}/.test(msg.content.replace(/\s/g,''))) {
+	if (/actf{.+}/i.test(msg.content.replace(/\s/g,''))) {
 		msg.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
 		if (sender) {
 			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
@@ -58,13 +58,13 @@ client.on('message', msg => {
 
 client.on('messageUpdate', (oldMessage,newMessage) => {
 	const sender = newMessage.guild?newMessage.guild.member(newMessage.author):null;
-	if (/super_legit_flag_string/.test(newMessage.content.replace(/\s/g,''))) {
+	if (/super_legit_flag_string/i.test(newMessage.content.replace(/\s/g,''))) {
 		newMessage.delete().then(m=>console.log(`deleted message (legit flag)`)).catch(console.error);
 		if (sender) {
 			sender.ban('legit flag sharing').then(m=>console.log(`banned ${sender.user.tag}`)).catch(_=>_);
 		}
 	}
-	if (/actf{.+}/.test(newMessage.content.replace(/\s/g,''))) {
+	if (/actf{.+}/i.test(newMessage.content.replace(/\s/g,''))) {
 		newMessage.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
 		if (sender) {
 			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
