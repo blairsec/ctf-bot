@@ -10,13 +10,13 @@ waw is evil
 down with big kristen
 nazi mod
 down with defund
+weeeeeeeb
 overthrow william austin wang`.split("\n")
 
 let kmh = `malware man
 kevin michael higgs
 higgy baby
-kmh use discord
-kmh stop using irc
+higgles
 nazi mod`.split("\n")
 function emojify(m){
 	return m.split("").map(x=>~"abcdefghijklmnopqrstuvwxyz".indexOf(x)?`:regional_indicator_${x}:`:x).join(' ');
@@ -33,13 +33,13 @@ client.on('message', msg => {
 	if (msg.content == "!ping" && msg.channel.id=="686030136406966311") {
 		msg.channel.send("pong");
 	}
-	if (/super_legit_flag_string/i.test(msg.content.replace(/\s/g,''))) {
+	if (/never_gonna_let_you_down/i.test(msg.content.replace(/[^a-zA-Z0-9{_-.}]/g,''))) {
 		msg.delete().then(m=>console.log(`deleted message (legit flag)`)).catch(console.error);
 		if (sender) {
 			sender.ban('legit flag sharing').then(m=>console.log(`banned ${sender.user.tag}`)).catch(_=>_);
 		}
 	}
-	if (/actf{.+}/i.test(msg.content.replace(/\s/g,''))) {
+	if (/actf{.+}/i.test(msg.content.replace(/[^a-zA-Z0-9{_-.}]/g,''))) {
 		msg.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
 		if (sender) {
 			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
@@ -58,13 +58,13 @@ client.on('message', msg => {
 
 client.on('messageUpdate', (oldMessage,newMessage) => {
 	const sender = newMessage.guild?newMessage.guild.member(newMessage.author):null;
-	if (/super_legit_flag_string/i.test(newMessage.content.replace(/\s/g,''))) {
+	if (/never_gonna_let_you_down/i.test(newMessage.content.replace(/[^a-zA-Z0-9{_-.}]/g,''))) {
 		newMessage.delete().then(m=>console.log(`deleted message (legit flag)`)).catch(console.error);
 		if (sender) {
 			sender.ban('legit flag sharing').then(m=>console.log(`banned ${sender.user.tag}`)).catch(_=>_);
 		}
 	}
-	if (/actf{.+}/i.test(newMessage.content.replace(/\s/g,''))) {
+	if (/actf{.+}/i.test(newMessage.content.replace(/[^a-zA-Z0-9{_-.}]/g,''))) {
 		newMessage.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
 		if (sender) {
 			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
