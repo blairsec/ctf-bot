@@ -33,13 +33,13 @@ client.on('message', msg => {
 	if (msg.content == "!ping" && msg.channel.id=="686030136406966311") {
 		msg.channel.send("pong");
 	}
-	if (/never_gonna_let_you_down/i.test(msg.content.replace(/[^a-zA-Z0-9{_-.}]/g,''))) {
+	if (/never_gonna_let_you_down/i.test(msg.content.replace(/[^a-zA-Z0-9{_\-.}]/g,''))) {
 		msg.delete().then(m=>console.log(`deleted message (legit flag)`)).catch(console.error);
 		if (sender) {
 			sender.ban('legit flag sharing').then(m=>console.log(`banned ${sender.user.tag}`)).catch(_=>_);
 		}
 	}
-	if (/actf{.+}/i.test(msg.content.replace(/[^a-zA-Z0-9{_-.}]/g,''))) {
+	if (/actf{.+}/i.test(msg.content.replace(/[^a-zA-Z0-9{_\-.}]/g,''))) {
 		msg.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
 		if (sender) {
 			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
@@ -58,13 +58,13 @@ client.on('message', msg => {
 
 client.on('messageUpdate', (oldMessage,newMessage) => {
 	const sender = newMessage.guild?newMessage.guild.member(newMessage.author):null;
-	if (/never_gonna_let_you_down/i.test(newMessage.content.replace(/[^a-zA-Z0-9{_-.}]/g,''))) {
+	if (/never_gonna_let_you_down/i.test(newMessage.content.replace(/[^a-zA-Z0-9{_\-.}]/g,''))) {
 		newMessage.delete().then(m=>console.log(`deleted message (legit flag)`)).catch(console.error);
 		if (sender) {
 			sender.ban('legit flag sharing').then(m=>console.log(`banned ${sender.user.tag}`)).catch(_=>_);
 		}
 	}
-	if (/actf{.+}/i.test(newMessage.content.replace(/[^a-zA-Z0-9{_-.}]/g,''))) {
+	if (/actf{.+}/i.test(newMessage.content.replace(/[^a-zA-Z0-9{_\-.}]/g,''))) {
 		newMessage.delete().then(m=>console.log(`deleted message (flag)`)).catch(console.error);
 		if (sender) {
 			sender.kick('flag sharing').then(m=>console.log(`kicked ${sender.user.tag}`)).catch(_=>_);
